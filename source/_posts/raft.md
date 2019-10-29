@@ -116,7 +116,7 @@ Raft 保证自己的日志，永远由领导者向追随者流动。也就是说
 
 与知乎网友讨论发现这个地方还是理解有误，这个图后来作者换了一个更容易理解的图：
 
-![error2](https://img.xilidou.com/img/img/raft2.jpg)
+![error2](https://img.xilidou.com/img/raft2.jpg)
 
 应该是说，如果高term的leader，可以操作低任期的 log 的话，会造成 d 和 e 情况错误。且 d 造成了 2 号日志的丢失。所以加上限制以后，就不会出现这种问题了。
 
