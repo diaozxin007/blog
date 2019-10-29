@@ -1,0 +1,16 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/ 
+Allow: /friends
+Allow: /tags 
+Allow: /archives/ 
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://xilidou.com/sitemap.xml
+Sitemap: https://xilidou.com/baidusitemap.xml
