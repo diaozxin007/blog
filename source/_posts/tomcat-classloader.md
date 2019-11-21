@@ -213,7 +213,7 @@ Tomcat 自己实现了自己的类加载器 WebAppClassLoader。类图关系图�
 2. 如果Tomcat 没有加载过这个类，则从系统类加载器的cache中查找是否加载过。
 3. 如果没有加载过这个类，尝试用ExtClassLoader类加载器类加载，重点来了，这里并没有首先使用 AppClassLoader 来加载类。这个Tomcat 的 WebAPPClassLoader 违背了双亲委派机制，直接使用了 ExtClassLoader来加载类。这里注意 ExtClassLoader 双亲委派依然有效，ExtClassLoader 就会使用 Bootstrap ClassLoader 来对类进行加载，保证了 Jre 里面的核心类不会被重复加载。 比如在 Web 中加载一个 Object 类。WebAppClassLoader → ExtClassLoader → Bootstrap ClassLoader，这个加载链，就保证了 Object 不会被重复加载。
 4. 如果 BoostrapClassLoader，没有加载成功，就会调用自己的 findClass 方法由自己来对类进行加载，findClass 加载类的地址是自己本 web 应用下的 class。
-5. 加载依然失败，才使用 AppClassLoader 继续加载。
+5. **加载依然失败，才使用 AppClassLoader 继续加载。**
 6. 都没有加载成功的话，抛出异常。
 
 总结一下以上步骤，WebAppClassLoader 加载类的时候，故意打破了JVM 双亲委派机制，绕开了 AppClassLoader，直接先使用 ExtClassLoader 来加载类。
