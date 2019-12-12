@@ -20,7 +20,7 @@ tags: [java,ArrayList,transient]
 - 对于 Java 对象来说，如果使用 JDK 的序列化实现。对象需要实现 `java.io.Serializable` 接口。
 - 可以使用 `ObjectOutputStream()` 和 `ObjectInputStream()` 对对象进行序列化和反序列化。
 - 序列化的时候会调用 `writeObject()` 方法，把对象转换为字节流。
-- 反序列化的时候会调用 `readObject()1 方法，把字节流转换为对象。
+- 反序列化的时候会调用 `readObject()` 方法，把字节流转换为对象。
 - Java 在反序列化的时候会校验字节流中的 `serialVersionUID`  与对象的 `serialVersionUID` 时候一致。如果不一致就会抛出 `InvalidClassException` 异常。官方强烈推荐为序列化的对象指定一个固定的 `serialVersionUID`。否则虚拟机会根据类的相关信息通过一个摘要算法生成，所以当我们改变类的参数的时候虚拟机生成的 `serialVersionUID` 是会变化的。
 - `transient` 关键字修饰的变量 **不会** 被序列化为字节流
 
@@ -55,7 +55,7 @@ tags: [java,ArrayList,transient]
 有几个重要的信息：
 
 - ArraryList 是动态数组，这个 elementData 就是存储对象的数据。
-- 这个数组居然使用了 transient 来修饰这个这个存储数据的数组。
+- 这个数组居然使用了 transient 来修饰。
 - 数组的长度等于 ArrayList 的容量。而不是 ArrayList 的元素数量。
 - size 是指的 ArrayList 中元素的数量，不是动态数组的长度。
 - size 没有被 transient 修饰，是可以被序列化的。
@@ -156,3 +156,6 @@ tags: [java,ArrayList,transient]
 
 [那些有趣的代码(一)--有点萌的 Tomcat 的线程池](https://xilidou.com/2019/10/15/tomcat-threadpool/)
 [那些有趣的代码(二)--偏不听父母话的 Tomcat 类加载器](https://xilidou.com/2019/10/27/tomcat-classloader/)
+
+欢迎关注我的微信公众号
+![二维码](https://img.xilidou.com/img/2019-04-25-022226.jpg)

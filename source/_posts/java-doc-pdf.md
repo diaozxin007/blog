@@ -206,6 +206,10 @@ public class OfficeService{
             }
         }
     }
+
+    private Matcher symbolMatcher(String str){
+        return SymbolPattern.matcher(str);
+    }
 }
 ```
 
