@@ -206,7 +206,7 @@ private void collect(Node x, String pre, Queue<String> q){
 4. 如果 x 节点的 val 不为空就加入到容器中。
 5. 暴力的遍历节点上的数组并 c 拼接到 pre 前缀上，递归查找。
 
-我们只需要调用方法 `keysWithPrefix()`
+我们只需要调用方法 `keysWithPrefix("se")` 即可。
 
 ## 总结
 
